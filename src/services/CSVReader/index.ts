@@ -1,4 +1,4 @@
-export default class CSVParser {
+export default class CSVReader {
   parse() {
     return {
       vertices: [],
