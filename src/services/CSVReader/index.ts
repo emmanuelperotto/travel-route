@@ -1,43 +1,32 @@
-import csvParser from "csv-parser";
-import fileSystem from "fs";
+const csvParser = require("csv-parser");
+const fileSystem = require("fs");
 
-interface IEdge {
-  from: string;
-  to: string;
-  weight: number;
-}
-
-interface IResult {
-  vertices: Set<string>;
-  edges: Array<IEdge>;
-}
+export type CSVParseResult = Map<string, Record<string, number>>;
 
 interface IDataRow {
-  firstVertex: string;
-  secondVertex: string;
+  sourceNode: string;
+  targetNode: string;
   weight: string;
 }
 
 export default class CSVReader {
-  private _result: IResult;
+  private _result: CSVParseResult;
   private _filePath: string;
 
   // TODO: add input validation
   constructor(filePath = "input-routes.csv") {
-    this._result = { vertices: new Set(), edges: [] };
+    this._result = new Map();
     this._filePath = filePath;
   }
 
-  parse() {
+  parse(): Promise<CSVParseResult> {
     // TODO: add error treatment
     return new Promise((resolve, reject) => {
       fileSystem
         .createReadStream(this.filePath)
         .pipe(csvParser())
-        .on("data", ({ firstVertex, secondVertex, weight }: IDataRow) => {
-          this.addVertex(firstVertex);
-          this.addVertex(secondVertex);
-          this.addEdge(firstVertex, secondVertex, Number(weight));
+        .on("data", ({ sourceNode, targetNode, weight }: IDataRow) => {
+          this.addEdge(sourceNode, targetNode, Number(weight));
         })
         .on("end", () => {
           resolve(this.result);
@@ -45,24 +34,21 @@ export default class CSVReader {
     });
   }
 
-  private addVertex(vertex: string) {
-    this._result.vertices.add(vertex);
-  }
+  private addEdge(sourceNode: string, targetNode: string, weight: number) {
+    const vertexNeighborhood = {
+      ...this.result.get(sourceNode),
+      [targetNode]: weight,
+    };
 
-  private addEdge(firstVertex: string, secondVertex: string, weight: number) {
-    this._result.edges.push({
-      from: firstVertex,
-      to: secondVertex,
-      weight,
-    });
+    this.result.set(sourceNode, vertexNeighborhood);
   }
 
   // Getters
-  public get result() {
+  private get result() {
     return this._result;
   }
 
-  public get filePath() {
+  private get filePath() {
     return this._filePath;
   }
 }

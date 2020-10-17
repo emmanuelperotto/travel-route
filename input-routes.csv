@@ -1,4 +1,4 @@
-firstVertex,secondVertex,weight
+sourceNode,targetNode,weight
 GRU,BRC,10
 BRC,SCL,5
 GRU,CDG,75

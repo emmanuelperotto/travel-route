@@ -19,7 +19,7 @@
     ],
     "rules": {
         "quotes": ["error", "double"],
-        "comma-dangle": ["error", "always-multiline"],
+        "comma-dangle": "off",
         "semi": "off",
         "space-before-function-paren": "off"
     }
