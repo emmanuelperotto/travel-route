@@ -1,28 +1,15 @@
 import Graph from "node-dijkstra";
 import readline from "readline";
-import CSVReader from "../../services/CSVReader";
-const fileName = process.argv[2];
-const csvReader = new CSVReader(fileName);
+import graphFactory from "../../factories/graphFactory";
+
+const filePath = process.argv[2];
 
 const cli = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-async function graphFactory(): Promise<Graph> {
-  return new Promise((resolve, reject) => {
-    csvReader.parse().then((csvResult) => {
-      const graph = new Graph();
-
-      csvResult.forEach((neighborhood, node) => {
-        graph.addNode(node, neighborhood);
-      });
-
-      resolve(graph);
-    });
-  });
-}
-
+// TODO: extract it to a class and make it "Open-Closed"
 function calculateShortestPath(
   graph: Graph,
   sourceNode: string,
@@ -34,7 +21,7 @@ function calculateShortestPath(
 async function handleRouteInput(route: string) {
   // TODO: validate input
   const [sourceNode, targetNode] = route.trim().toUpperCase().split("-");
-  const graph = await graphFactory();
+  const graph = await graphFactory(filePath);
 
   const { path, cost } = calculateShortestPath(graph, sourceNode, targetNode);
 

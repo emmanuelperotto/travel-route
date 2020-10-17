@@ -1,7 +1,7 @@
 const csvParser = require("csv-parser");
 const fileSystem = require("fs");
 
-export type CSVParseResult = Map<string, Record<string, number>>;
+export type CSVParseResult = Record<string, Record<string, number>>;
 
 interface IDataRow {
   sourceNode: string;
@@ -14,12 +14,12 @@ export default class CSVReader {
   private _filePath: string;
 
   // TODO: add input validation
-  constructor(filePath = "input-routes.csv") {
-    this._result = new Map();
+  constructor(filePath: string) {
+    this._result = {};
     this._filePath = filePath;
   }
 
-  parse(): Promise<CSVParseResult> {
+  async parse(): Promise<CSVParseResult> {
     // TODO: add error treatment
     return new Promise((resolve, reject) => {
       fileSystem
@@ -35,17 +35,24 @@ export default class CSVReader {
   }
 
   private addEdge(sourceNode: string, targetNode: string, weight: number) {
-    const vertexNeighborhood = {
-      ...this.result.get(sourceNode),
+    const nodeNeighborhood = {
+      ...this.result[sourceNode],
       [targetNode]: weight,
     };
 
-    this.result.set(sourceNode, vertexNeighborhood);
+    this.result = {
+      ...this.result,
+      [sourceNode]: nodeNeighborhood,
+    };
   }
 
   // Getters
   private get result() {
     return this._result;
+  }
+
+  private set result(newResult) {
+    this._result = newResult;
   }
 
   private get filePath() {
