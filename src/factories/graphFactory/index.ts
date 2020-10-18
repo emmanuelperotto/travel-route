@@ -1,6 +1,7 @@
 import Graph from "node-dijkstra";
 import CSVReader from "../../services/CSVReader";
 
+// TODO: add specs
 async function graphFactory(filePath = "input-routes.csv"): Promise<Graph> {
   const csvReader = new CSVReader(filePath);
 

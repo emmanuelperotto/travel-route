@@ -5,6 +5,7 @@ import Dijkstra from "../../services/ShortestPathCalculator/Dijkstra";
 
 const filePath = process.argv[2];
 
+// TODO: add specs
 const cli = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
