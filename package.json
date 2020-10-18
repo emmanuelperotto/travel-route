@@ -5,12 +5,14 @@
   "author": "Emmanuel Perotto",
   "license": "MIT",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "start": "ts-node src/"
   },
   "devDependencies": {
     "@babel/core": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
+    "@types/express": "^4.17.8",
     "@types/jest": "^26.0.14",
     "@types/node-dijkstra": "^2.5.1",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
@@ -30,6 +32,7 @@
   },
   "dependencies": {
     "csv-parser": "^2.3.3",
+    "express": "^4.17.1",
     "node-dijkstra": "^2.5.0"
   }
 }
