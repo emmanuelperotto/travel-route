@@ -5,7 +5,7 @@
   "author": "Emmanuel Perotto",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.12.1",

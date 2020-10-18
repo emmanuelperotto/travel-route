@@ -8,7 +8,8 @@ async function graphFactory(filePath = "input-routes.csv"): Promise<Graph> {
     csvReader.parse().then((csvResult) => {
       const graph = new Graph();
 
-      csvResult.forEach((neighborhood, node) => {
+      Object.keys(csvResult).forEach((node) => {
+        const neighborhood = csvResult[node];
         graph.addNode(node, neighborhood);
       });
 
