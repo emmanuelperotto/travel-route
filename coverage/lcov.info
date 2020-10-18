@@ -1,21 +1,59 @@
 TN:
-SF:src/services/ShortestPathCalculator/Dijkstra/index.ts
-FN:8,Object.<anonymous>
-FN:5,shortestPath
-FNF:2
-FNH:2
+SF:src/services/ShortestPathCalculator/index.ts
+FN:31,Object.<anonymous>
+FN:9,ShortestPathCalculator
+FN:15,calculate
+FN:20,get graph
+FN:24,get sourceNode
+FN:28,get targetNode
+FNF:6
+FNH:6
 FNDA:1,Object.<anonymous>
-FNDA:6,shortestPath
+FNDA:1,ShortestPathCalculator
+FNDA:1,calculate
+FNDA:1,get graph
+FNDA:1,get sourceNode
+FNDA:1,get targetNode
 DA:1,1
 DA:2,1
 DA:3,1
 DA:4,1
 DA:5,1
-DA:6,6
-DA:7,6
+DA:6,1
+DA:7,1
 DA:8,1
-LF:8
-LH:8
-BRF:0
-BRH:0
+DA:9,1
+DA:10,1
+DA:11,1
+DA:12,1
+DA:13,1
+DA:14,1
+DA:15,1
+DA:16,1
+DA:17,1
+DA:18,1
+DA:19,1
+DA:20,1
+DA:21,1
+DA:22,1
+DA:23,1
+DA:24,1
+DA:25,1
+DA:26,1
+DA:27,1
+DA:28,1
+DA:29,1
+DA:30,1
+DA:31,1
+LF:31
+LH:31
+BRDA:31,0,0,1
+BRDA:31,1,0,1
+BRDA:9,2,0,1
+BRDA:15,3,0,1
+BRDA:20,4,0,1
+BRDA:24,5,0,1
+BRDA:28,6,0,1
+BRF:7
+BRH:7
 end_of_record
