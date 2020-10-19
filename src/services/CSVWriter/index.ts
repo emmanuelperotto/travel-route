@@ -15,13 +15,21 @@ export default class CSVWriter {
         { id: "targetNode", title: "targetNode" },
         { id: "weight", title: "weight" },
       ]
-    })
+    });
   }
 
   write(sourceNode: string, targetNode: string, weight: number) {
+    this.validateNodes(sourceNode, targetNode);
+
     this.writer.writeRecords([
       { sourceNode, targetNode, weight }
     ])
+  }
+
+  private validateNodes(sourceNode: string, targetNode: string) {
+    if (sourceNode === "" || targetNode === "") {
+      throw new Error("Node can't be an empty string")
+    }
   }
 
   // Getters
