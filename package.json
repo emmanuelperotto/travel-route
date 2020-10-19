@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest --coverage",
-    "start": "ts-node src/"
+    "start": "ts-node src/",
+    "cli": "ts-node src/lib/travelRouteCLI/index.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.12.1",
