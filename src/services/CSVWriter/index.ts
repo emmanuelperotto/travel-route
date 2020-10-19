@@ -14,21 +14,22 @@ export default class CSVWriter {
         { id: "sourceNode", title: "sourceNode" },
         { id: "targetNode", title: "targetNode" },
         { id: "weight", title: "weight" },
-      ]
+      ],
+      append: true
     });
   }
 
   write(sourceNode: string, targetNode: string, weight: number) {
-    this.validateNodes(sourceNode, targetNode);
+    this.validateParams(sourceNode, targetNode, weight);
 
     this.writer.writeRecords([
       { sourceNode, targetNode, weight }
     ])
   }
 
-  private validateNodes(sourceNode: string, targetNode: string) {
-    if (sourceNode === "" || targetNode === "") {
-      throw new Error("Node can't be an empty string")
+  private validateParams(sourceNode: string, targetNode: string, weight: number) {
+    if (!sourceNode || !targetNode || !weight) {
+      throw new Error("Params are required: sourceNode, targetNode, weight");
     }
   }
 

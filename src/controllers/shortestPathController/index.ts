@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import graphFactory from "../../factories/graphFactory";
 import ShortestPathCalculator from "../../services/ShortestPathCalculator";
 import Dijkstra from "../../services/ShortestPathCalculator/Dijkstra";
-const filePath = process.env.NODE_ENV === "production" ? "input-routes.csv" : "input-routes.test.csv";
+const filePath = "input-routes.csv"
 
 export async function show(req: Request, res: Response) {
   const { sourceNode, targetNode } = req.query;

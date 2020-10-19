@@ -15,7 +15,7 @@ describe("show", () => {
   describe("when not sending params", () => {
     const requestMock = {
       query: {},
-    } as unknown as Request
+    } as Request
 
     it("returns http status 400", async () => {
       await show(requestMock, responseMock);
